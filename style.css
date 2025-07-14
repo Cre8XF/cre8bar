@@ -389,3 +389,20 @@ footer {
     text-align: left;
   }
 }
+.non-alcoholic-wrapper {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+#nonAlcoholicBtn {
+  background-color: #757be3;
+  border: 1px solid #ccc;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+#nonAlcoholicBtn:hover {
+  background-color: #e3e3e3;
+}

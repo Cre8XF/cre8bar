@@ -44,15 +44,11 @@ document.getElementById("searchBtn").addEventListener("click", () => {
           const card = document.createElement("div");
           card.className = "drink-card";
           card.innerHTML = `
+            <h3>${drink.strDrink}</h3>
             <img src="${drink.strDrinkThumb}" alt="${drink.strDrink}" />
-            <div class="drink-info">
-              <h3>${drink.strDrink}</h3>
-              <div class="drink-details"></div>
-            </div>
           `;
           container.appendChild(card);
-          const detailsContainer = card.querySelector(".drink-details");
-          showDrinkDetails(drink.idDrink, detailsContainer);
+          showDrinkDetails(drink.idDrink, card);
         });
       } else {
         container.innerHTML = "<p>Ingen drinker funnet.</p>";
@@ -86,15 +82,11 @@ document.getElementById("findBtn").addEventListener("click", () => {
           const card = document.createElement("div");
           card.className = "drink-card";
           card.innerHTML = `
+            <h3>${drink.strDrink}</h3>
             <img src="${drink.strDrinkThumb}" alt="${drink.strDrink}" />
-            <div class="drink-info">
-              <h3>${drink.strDrink}</h3>
-              <div class="drink-details"></div>
-            </div>
           `;
           container.appendChild(card);
-          const detailsContainer = card.querySelector(".drink-details");
-          showDrinkDetails(drink.idDrink, detailsContainer);
+          showDrinkDetails(drink.idDrink, card);
         });
       } else {
         container.innerHTML = "<p>Ingen drinker funnet med de valgte ingrediensene.</p>";
@@ -112,4 +104,34 @@ document.getElementById('resetBtn').addEventListener('click', () => {
   document.getElementById('drinkDetails').innerHTML = '';
   document.getElementById('searchInput').value = '';
   document.querySelectorAll('input[name="ingredient"]').forEach(cb => cb.checked = false);
+});
+
+document.getElementById("nonAlcoholicBtn").addEventListener("click", () => {
+  const container = document.getElementById("result");
+  container.innerHTML = "<p>Laster inn alkoholfrie drinker...</p>";
+
+  fetch("https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic")
+    .then(res => res.json())
+    .then(data => {
+      container.innerHTML = "";
+
+      if (data.drinks && Array.isArray(data.drinks)) {
+        data.drinks.forEach(drink => {
+          const card = document.createElement("div");
+          card.className = "drink-card";
+          card.innerHTML = `
+            <h3>${drink.strDrink}</h3>
+            <img src="${drink.strDrinkThumb}" alt="${drink.strDrink}" />
+          `;
+          container.appendChild(card);
+          showDrinkDetails(drink.idDrink, card);
+        });
+      } else {
+        container.innerHTML = "<p>Fant ingen alkoholfrie drinker.</p>";
+      }
+    })
+    .catch(error => {
+      container.innerHTML = "<p>Klarte ikke hente alkoholfrie drinker.</p>";
+      console.error(error);
+    });
 });
