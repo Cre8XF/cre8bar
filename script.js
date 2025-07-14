@@ -44,11 +44,15 @@ document.getElementById("searchBtn").addEventListener("click", () => {
           const card = document.createElement("div");
           card.className = "drink-card";
           card.innerHTML = `
-            <h3>${drink.strDrink}</h3>
             <img src="${drink.strDrinkThumb}" alt="${drink.strDrink}" />
+            <div class="drink-info">
+              <h3>${drink.strDrink}</h3>
+              <div class="drink-details"></div>
+            </div>
           `;
           container.appendChild(card);
-          showDrinkDetails(drink.idDrink, card);
+          const detailsContainer = card.querySelector(".drink-details");
+          showDrinkDetails(drink.idDrink, detailsContainer);
         });
       } else {
         container.innerHTML = "<p>Ingen drinker funnet.</p>";
@@ -82,11 +86,15 @@ document.getElementById("findBtn").addEventListener("click", () => {
           const card = document.createElement("div");
           card.className = "drink-card";
           card.innerHTML = `
-            <h3>${drink.strDrink}</h3>
             <img src="${drink.strDrinkThumb}" alt="${drink.strDrink}" />
+            <div class="drink-info">
+              <h3>${drink.strDrink}</h3>
+              <div class="drink-details"></div>
+            </div>
           `;
           container.appendChild(card);
-          showDrinkDetails(drink.idDrink, card);
+          const detailsContainer = card.querySelector(".drink-details");
+          showDrinkDetails(drink.idDrink, detailsContainer);
         });
       } else {
         container.innerHTML = "<p>Ingen drinker funnet med de valgte ingrediensene.</p>";
@@ -96,4 +104,12 @@ document.getElementById("findBtn").addEventListener("click", () => {
       container.innerHTML = "<p>En feil oppstod. Prøv igjen senere.</p>";
       console.error(error);
     });
+});
+
+document.getElementById('resetBtn').addEventListener('click', () => {
+  document.getElementById('result').innerHTML = '';
+  document.getElementById('matchResult').innerHTML = '';
+  document.getElementById('drinkDetails').innerHTML = '';
+  document.getElementById('searchInput').value = '';
+  document.querySelectorAll('input[name="ingredient"]').forEach(cb => cb.checked = false);
 });

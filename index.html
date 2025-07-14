@@ -12,6 +12,7 @@
   <header>
     <h1>🍸 Drinkoppskrifter</h1>
     <p>Finn dine favorittdrinker eller få forslag basert på hva du har hjemme</p>
+    <button id="resetBtn">🔄 Tilbakestill</button>
   </header>
 
   <!-- Søke etter drink -->
@@ -19,7 +20,6 @@
     <h2>🔍 Søk etter drink</h2>
     <input type="text" id="searchInput" placeholder="Skriv inn navn på drink..." />
     <button id="searchBtn">Søk</button>
-    <div id="result"></div>
   </section>
 
   <!-- Hva har du hjemme -->
@@ -37,8 +37,12 @@
       <label><input type="checkbox" name="ingredient" value="Cola" /> Cola</label>
     </div>
     <button id="findBtn">🔍 Finn drinker basert på ingredienser</button>
-    <div id="matchResult"></div>
   </section>
+
+  <!-- Resultater og detaljer -->
+  <div id="result"></div>
+  <div id="matchResult"></div>
+  <div id="drinkDetails" class="drink-details"></div>
 
   <footer>
     <p>Laget med ❤️ av Cre8XF</p>
