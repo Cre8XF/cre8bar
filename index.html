@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="no">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Drinkoppskrifter</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <header>
+    <h1>🍸 Drinkoppskrifter</h1>
+    <p>Finn dine favorittdrinker eller få forslag basert på hva du har hjemme</p>
+  </header>
+
+  <!-- Søke etter drink -->
+  <section class="search-section">
+    <h2>🔍 Søk etter drink</h2>
+    <input type="text" id="searchInput" placeholder="Skriv inn navn på drink..." />
+    <button id="searchBtn">Søk</button>
+    <div id="result"></div>
+  </section>
+
+  <!-- Hva har du hjemme -->
+  <section class="have-section">
+    <h2>🏠 Hva har du hjemme?</h2>
+    <p>Velg hvilke ingredienser du har tilgjengelig:</p>
+    <div class="ingredients">
+      <label><input type="checkbox" name="ingredient" value="Vodka" /> Vodka</label>
+      <label><input type="checkbox" name="ingredient" value="Gin" /> Gin</label>
+      <label><input type="checkbox" name="ingredient" value="Rum" /> Rom</label>
+      <label><input type="checkbox" name="ingredient" value="Tequila" /> Tequila</label>
+      <label><input type="checkbox" name="ingredient" value="Triple Sec" /> Triple Sec</label>
+      <label><input type="checkbox" name="ingredient" value="Lime juice" /> Lime juice</label>
+      <label><input type="checkbox" name="ingredient" value="Cranberry juice" /> Tranebærjuice</label>
+      <label><input type="checkbox" name="ingredient" value="Cola" /> Cola</label>
+    </div>
+    <button id="findBtn">🔍 Finn drinker basert på ingredienser</button>
+    <div id="matchResult"></div>
+  </section>
+
+  <footer>
+    <p>Laget med ❤️ av Cre8XF</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
